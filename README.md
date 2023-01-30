@@ -1,3 +1,3 @@
-# Lab Sheet 1
+# Timepass
 
-I didn't write the code for q2.c . Amit wrote but I just went ahead and uploaded since I just want to store things conveniently for later.
+Includes the small projects I did for learning purposes. They can be reused by anyone as they wish (preferrably they give a link to this repo :) )
