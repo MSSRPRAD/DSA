@@ -126,6 +126,6 @@ int main(void){
 	Node *head1 = readList();
 	Node *head2 = readList();
 	Node *merged = mergeLists(head1, head2);
-	printf("\n-----------------------\n");
+	//printf("\n-----------------------\n");
 	printList(merged);
 }

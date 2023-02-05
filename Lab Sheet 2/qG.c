@@ -141,6 +141,17 @@ Node *deleteNode(Node **head, int a){
 	return *head;
 }
 
+Node *deleteValue(Node **head, int a){
+	for(int i=1;i<=2;i++){
+		for(int i=1;i<=size(*head);i++){
+			if(findN(*head, i)->data==a){
+				*head = deleteNode(head, i);
+			}
+		}
+	}
+	return *head;		
+}
+
 Node *rearrangeList(Node *head){
 	Node *current=NULL;
 	Node *newList = NULL;
@@ -178,14 +189,16 @@ bool isUnique(Node *head, Node *node){
 }
 
 Node *removeRepeatedNodes(Node **head){
-	Node *newList = NULL;
-	int no = size(*head);
-	for(int i=1;i<=no;i++){
-		if(isUnique(*head, findN(*head, i))){
-			newList = addToList(newList, findN(*head, i)->data);
+	Node *curr = *head;
+	int temp;
+	for(int i =1;i<=size(*head);i++){
+		Node *curr = findN(*head, i-1);
+		if(curr->data == (curr->next)->data){
+			*head = deleteValue(head, curr->data);
+			i-=1;
 		}
 	}
-	return newList;
+	return *head;
 }
 
 int main(void){

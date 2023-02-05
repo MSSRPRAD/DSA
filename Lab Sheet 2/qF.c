@@ -132,29 +132,30 @@ int isPalindrome(Node *head){
 	return 1;
 }
 
-Node *rearrangeList(Node *head){
-	Node *current=NULL;
-	Node *newList = NULL;
-	current = head;
-	while(current!=NULL){
-		newList = addToList(newList,current->data);
-		printf("%d ", current->data);
-		current = current->next;
-		if(current!=NULL) current = current->next;
+Node *lastNode(Node *head){
+	Node *curr = head;
+	while(curr->next!=NULL){
+		curr = curr->next;
 	}
-	current = head->next;
-	while(current!=NULL){
-		newList = addToList(newList,current->data);
-		printf("%d ", current->data);
-		current = current->next;
-		if(current!=NULL) current = current->next;
+	return curr;
+}
+
+Node *rearrangeList(Node **head){
+	int no = size(*head)/2;
+	Node *curr = *head;
+	while(no--){
+		Node *temp = curr->next;
+		curr->next = temp->next;
+		temp->next = NULL;
+		Node *m = lastNode(*head);
+		m->next = temp;
+		curr = curr->next;
 	}
-	//printList(newList);
-	return newList;
+	return *head;
 }
 
 int main(void){
 	Node *head = readList();
-	Node *newList = rearrangeList(head);
-	//printList(newList);
+	Node *newList = rearrangeList(&head);
+	printList(newList);
 }

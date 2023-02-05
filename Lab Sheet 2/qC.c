@@ -147,7 +147,7 @@ Node *swapAdjacent(Node **head, int a, int b){
 	//else
 	prev = findN(*head, a-1);
 	Node *tmp = n2->next;
-	printf("%d %d %d\n", prev->data,n1->data,n2->data);
+	//printf("%d %d %d\n", prev->data,n1->data,n2->data);
 	prev->next=n2;
 	n2->next=n1;
 	n1->next=tmp;

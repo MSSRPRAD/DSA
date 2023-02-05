@@ -41,9 +41,7 @@ int main(void){
 		scanf("%s", s[i].name);
 		scanf("%d %d %d", &s[i].gold, &s[i].silver, &s[i].bronze);
 	}
-	for(int i=0;i<n;i++){
-		printf("%s %d %d %d", s[i].name,s[i].gold, s[i].silver, s[i].bronze);
-	}
+	
 	
 	int arr[n];
 	for(int i=0;i<n;i++){
@@ -75,9 +73,8 @@ int main(void){
 		
 	}
 	
-	printf("\n\n");
 	for(int i=n-1;i>-1;i--){
-		printf("%s\n", s[i].name); 
+		printf("%s\n", s[i].name);
 	}
 	
 	printf("\n%d", isGreater(&s[1],&s[0]));
