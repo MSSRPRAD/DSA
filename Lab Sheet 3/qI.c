@@ -1,10 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int findHalfwayStep(long int sz, long int long target){
-    long int left = 1;
-    long int right = sz;
-    long int i;
+int findHalfwayStep(int long sz, int long long target){
+    int long left = 1;
+    int long right = sz;
+    int long i;
     while(left < right){
         i  = (left+right)/2;
         int long sum = sz*(sz-1)/2-i*(i+1)/2+i;
@@ -21,11 +21,11 @@ int findHalfwayStep(long int sz, long int long target){
 }
 
 int main(void){
-    long int size;
+    int long size;
     scanf("%ld", &size);
     //printf("%ld", size);
     //Make halfway = [size*(size-1)/4]
-    long int halfway = ((size*(size-1))/2); 
+    int long halfway = ((size*(size-1))/2); 
     halfway = halfway/2;
     printf("\n%d\n", halfway);
     printf("%d", findHalfwayStep(size, halfway));
