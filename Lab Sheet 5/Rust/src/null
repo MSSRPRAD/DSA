@@ -1,0 +1,69 @@
+warning: unused doc comment
+  --> src/main.rs:37:9
+   |
+37 |           /// Also increase right till n
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | /         if sum%k == 0{
+39 | |             count+=1;
+40 | |             println!("{:?}, {:?}, {:?}", sum, arr[left], arr[right]);
+41 | |             let temp = right;
+...  |
+54 | |             left += 1;
+55 | |         }
+   | |_________- rustdoc does not generate documentation for expressions
+   |
+   = help: use `//` for a plain comment
+   = note: `#[warn(unused_doc_comments)]` on by default
+
+warning: unused variable: `count`
+  --> src/main.rs:22:13
+   |
+22 |     let mut count: usize = 0;
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_count`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: variable does not need to be mutable
+  --> src/main.rs:22:9
+   |
+22 |     let mut count: usize = 0;
+   |         ----^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: variable does not need to be mutable
+  --> src/main.rs:23:9
+   |
+23 |     let mut n: usize;
+   |         ----^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> src/main.rs:24:9
+   |
+24 |     let mut k: usize;
+   |         ----^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> src/main.rs:28:9
+   |
+28 |     let mut arr = read_vec::<usize>();
+   |         ----^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: crate `Rust` should have a snake case name
+  |
+  = help: convert the identifier to snake case: `rust`
+  = note: `#[warn(non_snake_case)]` on by default
+
+warning: `Rust` (bin "Rust") generated 7 warnings
+    Finished dev [unoptimized + debuginfo] target(s) in 0.02s
+     Running `/home/pradyumnamalladi/Desktop/Lab Sheet 6/Rust/target/debug/Rust`
+thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: ParseIntError { kind: InvalidDigit }', src/main.rs:17:33
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

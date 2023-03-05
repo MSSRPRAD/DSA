@@ -1,0 +1,63 @@
+   Compiling Rust v0.1.0 (/home/pradyumnamalladi/Desktop/Lab Sheet 6/Rust)
+warning: unused variable: `count`
+  --> src/main.rs:23:13
+   |
+23 |     let mut count: usize = 0;
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_count`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `n`
+  --> src/main.rs:24:13
+   |
+24 |     let mut n: usize;
+   |             ^ help: if this is intentional, prefix it with an underscore: `_n`
+
+warning: unused variable: `k`
+  --> src/main.rs:25:13
+   |
+25 |     let mut k: usize;
+   |             ^ help: if this is intentional, prefix it with an underscore: `_k`
+
+warning: variable does not need to be mutable
+  --> src/main.rs:23:9
+   |
+23 |     let mut count: usize = 0;
+   |         ----^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: variable does not need to be mutable
+  --> src/main.rs:26:9
+   |
+26 |     let mut n: usize = read!();
+   |         ----^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> src/main.rs:27:9
+   |
+27 |     let mut k: usize = read!();
+   |         ----^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> src/main.rs:28:9
+   |
+28 |     let mut arr = read_vec::<usize>();
+   |         ----^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: crate `Rust` should have a snake case name
+  |
+  = help: convert the identifier to snake case: `rust`
+  = note: `#[warn(non_snake_case)]` on by default
+
+warning: `Rust` (bin "Rust") generated 8 warnings
+    Finished dev [unoptimized + debuginfo] target(s) in 0.17s
+     Running `target/debug/Rust`
