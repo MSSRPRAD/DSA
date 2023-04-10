@@ -1,70 +1,65 @@
-#include<iostream>
-#include<bits/stdc++.h>
-#include<vector>
+#include <iostream>
+#include <string>
 
-std::string next_smallest_palindrome(std::string input, int n) {
-    // If no is all 9's
-    bool is_all_nines = true;
-    for (int i = 0; i < n; i++)
-    {
-        if (input[i] != '9'){
-            is_all_nines = false;
+using namespace std;
+
+string getNextSmallestPalindrome(string num) {
+    int n = num.length();
+    int mid = n / 2;
+    bool carry = true;
+    
+    // Compare the characters from the middle point towards the start and end of the string
+    for(int i = mid - 1, j = (n % 2 == 0 ? mid : mid + 1); i >= 0 && j < n; i--, j++) {
+        if(num[i] != num[j]) {
+            carry = false;
+            break;
         }
     }
-    if(is_all_nines) {
-        std::string res = "1";
-        for (int i = 1; i < n;i++){
-            std::string z = "0";
-            res.append(z);
+    
+    // If the input number is already a palindrome or if the left half is greater than the right half
+    if(carry || num[mid] < '9') {
+        // Copy the left half of the string to the right half, reversing it in the process
+        for(int i = mid - 1, j = (n % 2 == 0 ? mid : mid + 1); i >= 0; i--, j++) {
+            num[j] = num[i];
         }
-        std::string o = "1";
-        res.append(o);
-        return res;
+        
+        // If the resulting string is greater than the input number, we have found the next smallest palindrome
+        if(num > num.substr(0, mid + (n % 2 == 0 ? 0 : 1))) {
+            return num;
+        }
     }
-
-    if (n % 2 != 0)
-        {
-            int mid = (n - 1 / 2);
-            // Find the digits around middle digit
-            input[mid - 1] > input[mid + 1] ? input[mid + 1] = input[mid - 1] : {
-                if (input[mid]=='9'){
-                    input[mid] == '0';
-                    input[mid - 1] += 1;
-                } else {
-                    
-                }
-            }input[mid] += 1;
-            std::cout << "starting odd\n";
-            // Replace right half with mirror of left half
-            for (int i = 0; i <= mid - 1; i++)
-            {
-                input[mid + i + 1] = input[mid - i - 1];
-            }
-            return input;
-        }
-        else
-        {
-            int midl = (n - 1) / 2;
-            int midr = (n + 1) / 2;
-            // Find the middle two digits
-            input[midl] > input[midr] ? input[midr] = input[midl] : input[midl] += 1;
-            // Replace right half with mirror of left half
-            for (int i = 0; i <= midl; i++)
-            {
-                input[midr + i] = input[midl - i];
-            }
-            return input;
-        }
-
-    return "O-Oh! Something went wrong!";
+    
+    // Add 1 to the middle character and propagate the carry to the left half of the string
+    carry = true;
+    for(int i = mid - 1, j = (n % 2 == 0 ? mid : mid + 1); i >= 0 && carry; i--, j++) {
+        int digit = (num[i] - '0' + 1) % 10;
+        num[i] = num[j] = digit + '0';
+        carry = digit == 0;
+    }
+    
+    // If there is a carry, we need to add an extra digit to the left half of the string
+    if(carry) {
+        num.insert(0, "1");
+        num[n] = '1';
+    }
+    
+    // Copy the left half of the string to the right half, reversing it in the process
+    for(int i = mid - 1, j = (n % 2 == 0 ? mid : mid + 1); i >= 0; i--, j++) {
+        num[j] = num[i];
+    }
+    return num;
 }
 
 int main(void){
-    std::string input;
-    int n;
-    std::cin >> n;
-    std::cin >> input;
-
-    std::cout << next_smallest_palindrome(input, n);
+    // Read the input number from the user
+    string num;
+    cout << "Enter a number: ";
+    cin >> num;
+    
+    // Find the next smallest palindrome of the input number
+    string nextPalindrome = getNextSmallestPalindrome(num);
+    
+    // Print the result
+    cout << "The next smallest palindrome is: " << nextPalindrome << endl;
     return 0;
 }
