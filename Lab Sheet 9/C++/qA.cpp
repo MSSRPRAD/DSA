@@ -11,6 +11,7 @@ int main() {
         sum+=a;
         priority_queue.push(a);
     }
+    std::cout<<sum<<std::endl;
     while(sum<0){
         int a = priority_queue.top();
         sum -= a;

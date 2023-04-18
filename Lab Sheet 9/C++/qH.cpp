@@ -13,8 +13,6 @@ bool check(std::vector<int> vec, int mid, int n, int k){
     }
     count++;
     if (count<=k) return true;
-    else return false;
-
     return false;
 }
 

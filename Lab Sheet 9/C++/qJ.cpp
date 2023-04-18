@@ -22,14 +22,12 @@ int main(void){
     std::priority_queue<ll, std::vector<ll>, std::greater<int>> departures;
 
     for(ll i=0;i<n;i++){
-        if(departures.empty()||
-            trains[i].first<departures.top()) {
-                platforms++;
-            } else {
-                departures.pop();
-            }
-
-            departures.push(trains[i].second);
+        if(departures.empty()||trains[i].first<departures.top()) {
+            platforms++;
+        } else {
+            departures.pop();
+        }
+        departures.push(trains[i].second);
     }
 
     std::cout<<platforms<<std::endl;
